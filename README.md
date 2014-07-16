@@ -30,6 +30,7 @@ Create ring, fill it and dump. You can use ShiftLeft to shift current pointer to
 
 	fmt.Printf("%+v\n", dump) // [0 1 2 3 4]
 
+	// Shift current pointer to next item
 	ring.ShiftLeft()
 
 	dump2 := ring.Dump()
@@ -38,6 +39,7 @@ Create ring, fill it and dump. You can use ShiftLeft to shift current pointer to
 
 	// Add some item again, current item will be overwritten
 	prev := ring.Insert(100)
+
 	// Previous item returned
 	fmt.Printf("%+v\n", prev) // 1
 
