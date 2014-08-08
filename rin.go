@@ -34,12 +34,12 @@ func (self *Ringo) Insert(value interface{}) interface{} {
 	return result
 }
 
-func (self *Ringo) Dump() []interface{} {
+func (self *Ringo) DumpSize(size int) []interface{} {
 	self.lock.RLock()
 
-	tmp := make([]interface{}, self.size)
+	tmp := make([]interface{}, size)
 	ptr := self.current
-	for i := 0; i < self.size; i++ {
+	for i := 0; i < size; i++ {
 		tmp[i] = self.items[ptr]
 		if ptr == self.size-1 {
 			ptr = 0
@@ -51,6 +51,10 @@ func (self *Ringo) Dump() []interface{} {
 	self.lock.RUnlock()
 
 	return tmp
+}
+
+func (self *Ringo) Dump() []interface{} {
+	return self.DumpSize(self.size)
 }
 
 func (self *Ringo) ShiftLeft() {
